@@ -1,0 +1,54 @@
+.LabelForm{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    
+}
+
+.InputForm{
+    border-radius: 5px;
+    width: 400px;
+    height: 30px;
+}
+
+.cadastro{
+    left: 50%;
+}
+
+.forms{
+    
+}
+
+.button{
+ font-size: 20px;
+width: 150px;
+height: 50px;
+ 
+ 
+
+
+}
+
+.TituloCadastro{
+    font-size: 30px;
+}
+
+.mensagem-success{
+    color: rgb(23, 193, 23);
+    
+}
+
+.mensagem-error{
+    color:red;
+    
+}
+
+.IconeCadastro{
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+.divButton{
+display: flex;
+justify-content: right;
+}
