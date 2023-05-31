@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SongLyrics from './SongLyrics';
+import { useNavigate } from 'react-router-dom';
 
 function SongSearchForm() {
   const [artist, setArtist] = useState('');
@@ -15,6 +16,7 @@ function SongSearchForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     // Aqui você pode fazer qualquer ação necessária com os dados de busca, como enviar para a API ou atualizar algum estado
   };
 

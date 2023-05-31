@@ -11,6 +11,11 @@
     height: 30px;
 }
 
+.music-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
 .cadastro{
     left: 50%;
 }

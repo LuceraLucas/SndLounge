@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CadastroCliente.css';
 
-function Login() {
+
+
+function Login(props) {
+  const [mensagemTipo, setMensagemTipo] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  let userName = '';
   const [errorMessage, setErrorMessage] = useState('');
+  const [nome, setNome] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -28,12 +34,20 @@ function Login() {
     axios.post('http://localhost:3001/login', loginData)
       .then(response => {
         // Verifica a resposta da API
-        if (response.data.success) {
-          // Sucesso no login
+       if (response.data.success) {
+          userName = response.data.nome;
           console.log('Login realizado com sucesso!');
-          // Aqui você pode fazer redirecionamento para outra página, definir um token de autenticação, etc.
-        } else {
-          // Erro no login
+          let mensagemBemvindo = 'Bem-Vindo(a), ' + userName;
+          setErrorMessage(mensagemBemvindo);
+          props.setIsLoggedIn(true);
+          props.setNome(userName);
+          props.setEmail(email); // <--- Alteração aqui
+ 
+  console.log(userName);
+  console.log(email);
+  console.log(isLoggedIn);
+  // Resto do código...
+} else {
           console.log('Falha no login:', response.data.message);
           setErrorMessage(response.data.message);
         }
@@ -44,12 +58,12 @@ function Login() {
         setErrorMessage('Erro inesperado. Por favor, tente novamente mais tarde.');
       });
 
-    // Limpar os campos após o envio do formulário
-    setEmail('');
-    setPassword('');
+    
   };
 
   return (
+
+    
     <form onSubmit={handleSubmit}>
         <img className="IconeCadastro" src="iconLogin.png" alt="Ícone de Login" />
     <h1 className='TituloCadastro'>Faça Login</h1>
@@ -74,7 +88,7 @@ function Login() {
         />
       </div>
       <br/>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="error-message">{errorMessage} </p>}
       <div className='divButton'><button className='button' type="submit">Login</button></div>
     </form>
   );
